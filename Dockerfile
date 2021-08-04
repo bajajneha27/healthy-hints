@@ -3,7 +3,7 @@
 
 # [START cloudrun_rails_base_image]
 
-FROM ruby:3.0-buster
+FROM ruby:2.7.4-buster
 # [END cloudrun_rails_base_image]
 
 RUN (curl -sS https://deb.nodesource.com/gpgkey/nodesource.gpg.key | gpg --dearmor | apt-key add -) && \
