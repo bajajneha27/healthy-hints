@@ -30,8 +30,8 @@ ENV RAILS_ENV=production
 ENV RAILS_LOG_TO_STDOUT=true
 
 # [START cloudrun_rails_dockerfile_key]
-ARG MASTER_KEY
-ENV RAILS_MASTER_KEY=${MASTER_KEY}
+# ARG MASTER_KEY
+# ENV RAILS_MASTER_KEY=${MASTER_KEY}
 # [END cloudrun_rails_dockerfile_key]
 
 EXPOSE 8080
