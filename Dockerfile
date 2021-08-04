@@ -29,5 +29,5 @@ ENV RAILS_ENV=production
 # Redirect Rails log to STDOUT for Cloud Run to capture
 ENV RAILS_LOG_TO_STDOUT=true
 
-EXPOSE 8080
-CMD ["bin/rails", "server", "-b", "0.0.0.0", "-p", "8080"]
+EXPOSE 3003
+CMD ["bin/rails", "server", "-b", "0.0.0.0", "-p", "3003"]
