@@ -29,5 +29,10 @@ ENV RAILS_ENV=production
 # Redirect Rails log to STDOUT for Cloud Run to capture
 ENV RAILS_LOG_TO_STDOUT=true
 
-EXPOSE 3003
-CMD ["bin/rails", "server", "-b", "0.0.0.0", "-p", "3003"]
+# [START cloudrun_rails_dockerfile_key]
+ARG MASTER_KEY
+ENV RAILS_MASTER_KEY=${MASTER_KEY}
+# [END cloudrun_rails_dockerfile_key]
+
+EXPOSE 8080
+CMD ["bin/rails", "server", "-b", "0.0.0.0", "-p", "8080"]
