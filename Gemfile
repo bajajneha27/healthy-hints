@@ -39,6 +39,7 @@ end
 gem 'rack-cors' , '1.1.1'
 gem 'google-cloud-vision', '1.1.2'
 gem 'google-cloud-firestore', '2.6.2'
+gem 'data_uri', '0.1.0'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
