@@ -11,7 +11,7 @@ steps:
     args: ["push", "gcr.io/${PROJECT_ID}/${_SERVICE_NAME}"]
 
 substitutions:
-  _REGION: asia-south1
+  # _REGION: asia-south1
   _SERVICE_NAME: healthy-hints-service
   _SECRET_NAME: RAILS_SECRET_NAME
 
