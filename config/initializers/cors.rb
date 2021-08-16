@@ -7,7 +7,7 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins 'localhost:3001'
+    origins 'localhost:3001', 'healthy-hints-frontend-service-gho6jrewcq-el.a.run.app'
 
     resource '*',
       headers: :any,
