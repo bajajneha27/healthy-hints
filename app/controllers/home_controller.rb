@@ -18,9 +18,6 @@ class HomeController < ApplicationController
 		data_uri = params[:data_uri] || ''
 
 		project_id = 'healthy-hints-321005'
-		ENV['GOOGLE_APPLICATION_CREDENTIALS'] = "/Users/bajajnehaa/Downloads/healthy-hints-321005-ee275d5a467c.json"
-		ENV['GOOGLE_CLOUD_PROJECT'] = project_id
-
 		image_annotator = Google::Cloud::Vision.image_annotator
 		file_path = "storage/images/image.png"
 		res = image_annotator.text_detection image: file_path
