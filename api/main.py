@@ -12,7 +12,11 @@ logger = logging.getLogger(__name__)
 # Load environment variables
 load_dotenv()
 
-app = FastAPI()
+app = FastAPI(
+  title="Healthy Hints API",
+  description="Open-source ingredient analysis API",
+  version="0.1.0"
+)
 
 # Get API key from .env
 api_key = os.getenv("GOOGLE_API_KEY")

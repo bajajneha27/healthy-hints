@@ -9,6 +9,8 @@ An open-source ingredient analysis tool.
 
 ## Running Backend
 
+```
 cd backend
 pip install -r requirements.txt
 uvicorn app.main:app --reload
+```
