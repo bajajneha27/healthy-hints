@@ -1,7 +1,13 @@
-# Healthy Hints
+<p aign="center">
+  <img src="web/public/hh-logo.png" width="120" />
+</p>
+<h1 align="center">Healthy Hints</h1>
+<p align="center">
+  Understand what's really inside your products.
+</p>
 
-An open-source AI-powered ingredient analysis tool.
-Upload or paste food ingredient lists and get a short health breakdown for each ingredient.
+Healthy Hints is an open-source AI tool that decodes complex ingredient labels into simple, understandable insights.
+Healthy Hints focuses on helping people understand what’s actually inside packaged products — food, cosmetics, candles, supplements, and more.
 
 ## Features
 
@@ -9,6 +15,21 @@ Upload or paste food ingredient lists and get a short health breakdown for each 
 - Gemini-powered classification
 - Health rating (Healthy/Moderate/Avoid)
 - Short explanation per ingredient
+
+## Vision
+
+We believe people deserve transparency in the products they consume, apply, or inhale.
+
+Ingredient labels are often filled with complex chemical names and unfamiliar terminology. Healthy Hints aims to make those labels readable, approachable, and understandable for everyone.
+
+Our long-term vision is to become a community-driven transparency engine for all packaged consumables — from food and skincare to home fragrance and wellness products.
+
+In the future, Healthy Hints could integrate with:
+
+- Smart devices
+- Grocery platforms
+- Wearables
+- E-commerce systems
 
 ## Tech Stack
 Backend:
