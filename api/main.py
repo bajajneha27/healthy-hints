@@ -1,4 +1,5 @@
-from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi import FastAPI
 from pydantic import BaseModel
 from dotenv import load_dotenv
 from google import genai
@@ -16,6 +17,16 @@ app = FastAPI(
   title="Healthy Hints API",
   description="Open-source ingredient analysis API",
   version="0.1.0"
+)
+
+app.add_middleware(
+  CORSMiddleware,
+  allow_origins=[
+    "http://localhost:5173",
+    "http://127.0.0.1:5173"],
+  allow_credentials=True,
+  allow_methods=["*"],
+  allow_headers=["*"],
 )
 
 # Get API key from .env
@@ -40,20 +51,18 @@ def analyse(data: IngredientRequest):
 
   INGREDIENTS_PLACEHOLDER
   Return ONLY valid JSON in this format:
-  {
-    "ingredients": [
+  [
     {
       "name": "",
       "category": "",
       "health_rating": "",
-      "short_explanation": ""
-    }],
-    "overall_score": 1-10,
-    "summary": ""
-  }
+      "explanation": ""
+    }
+  ]
   """
 
   logger.debug(f"Received input: {data.ingredients_text}")
+  # print("Incoming body:", body)
   prompt = prompt.replace("INGREDIENTS_PLACEHOLDER", data.ingredients_text)
 
   try:
