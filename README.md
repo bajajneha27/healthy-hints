@@ -1,5 +1,5 @@
 <p aign="center">
-  <img src="web/public/hh-logo.png" width="120" />
+  <img src="web/src/assets/hh-logo.png" width="100" />
 </p>
 <h1 align="center">Healthy Hints</h1>
 <p align="center">
@@ -8,6 +8,12 @@
 
 Healthy Hints is an open-source AI tool that decodes complex ingredient labels into simple, understandable insights.
 Healthy Hints focuses on helping people understand what’s actually inside packaged products — food, cosmetics, candles, supplements, and more.
+
+## Demo
+
+<p align="center">
+  <img src="web/src/assets/demo.png" width="800" />
+</p>
 
 ## Features
 

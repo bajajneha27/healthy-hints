@@ -79,33 +79,35 @@ function App() {
 
       {results.length > 0 && (
         <body>
-          <h3>Overall Score: {score}</h3>
-          <table
-            style={{
-              width: "100%",
-              marginTop: 20,
-              borderCollapse: "collapse"
-            }}
-          >
-            <thead>
-              <tr>
-                <th align="left">Ingredient</th>
-                <th align="left">Category</th>
-                <th align="left">Rating</th>
-                <th align="left">Explanation</th>
-              </tr>
-            </thead>
-            <tbody>
-              {results.map((item, index) => (
-                <tr key={index}>
-                  <td>{item.name}</td>
-                  <td>{item.category}</td>
-                  <td style={{ color: getColor(item.health_rating), fontWeight: "bold"}}>{item.health_rating}</td>
-                  <td>{item.explanation}</td>
+          {/* <div className='score-card'>Overall Score: {score}</div> */}
+          <div className='app-container'>
+            <table
+              style={{
+                width: "100%",
+                marginTop: 20,
+                borderCollapse: "collapse"
+              }}
+            >
+              <thead>
+                <tr>
+                  <th align="left">Ingredient</th>
+                  <th align="left">Category</th>
+                  <th align="left">Rating</th>
+                  <th align="left">Explanation</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {results.map((item, index) => (
+                  <tr key={index}>
+                    <td>{item.name}</td>
+                    <td>{item.category}</td>
+                    <td style={{ color: getColor(item.health_rating), fontWeight: "bold"}}>{item.health_rating}</td>
+                    <td>{item.explanation}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </body>
       )}
     </div>
