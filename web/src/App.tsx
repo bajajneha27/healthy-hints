@@ -8,6 +8,19 @@ function App() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
 
+  const getColor = (rating: string) => {
+    switch(rating) {
+      case "Healthy":
+        return "green"
+      case "Moderate":
+        return "orange"
+      case "Avoid":
+        return "red"
+      default:
+        return "black"
+    }
+  }
+
   const analyseIngredients = async() => {
     setLoading(true)
     setError("")
@@ -35,6 +48,12 @@ function App() {
     }
   }
 
+  const score = results.reduce((acc, item) => {
+    if (item.health_rating == "Healthy") return acc + 1
+    if(item.health_rating == "Avoid") return acc - 1
+    return acc
+  }, 0)
+
   return(
     <div style={{ maxWidth: 800, margin: "40px auto", fontFamily: "Arial" }}>
       <h1>Healthy Hints</h1>
@@ -59,32 +78,35 @@ function App() {
       )}
 
       {results.length > 0 && (
-        <table
-          style={{
-            width: "100%",
-            marginTop: 20,
-            borderCollapse: "collapse"
-          }}
-        >
-          <thead>
-            <tr>
-              <th align="left">Ingredient</th>
-              <th align="left">Category</th>
-              <th align="left">Rating</th>
-              <th align="left">Explanation</th>
-            </tr>
-          </thead>
-          <tbody>
-            {results.map((item, index) => (
-              <tr key={index}>
-                <td>{item.name}</td>
-                <td>{item.category}</td>
-                <td>{item.health_rating}</td>
-                <td>{item.explanation}</td>
+        <body>
+          <h3>Overall Score: {score}</h3>
+          <table
+            style={{
+              width: "100%",
+              marginTop: 20,
+              borderCollapse: "collapse"
+            }}
+          >
+            <thead>
+              <tr>
+                <th align="left">Ingredient</th>
+                <th align="left">Category</th>
+                <th align="left">Rating</th>
+                <th align="left">Explanation</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {results.map((item, index) => (
+                <tr key={index}>
+                  <td>{item.name}</td>
+                  <td>{item.category}</td>
+                  <td style={{ color: getColor(item.health_rating), fontWeight: "bold"}}>{item.health_rating}</td>
+                  <td>{item.explanation}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </body>
       )}
     </div>
   )

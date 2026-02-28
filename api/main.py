@@ -1,11 +1,12 @@
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi import FastAPI
-from pydantic import BaseModel
 from dotenv import load_dotenv
+from pydantic import BaseModel
+from fastapi import FastAPI
 from google import genai
-import os
-import json
+from pathlib import Path
 import logging
+import json
+import os
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
@@ -35,6 +36,13 @@ api_key = os.getenv("GOOGLE_API_KEY")
 # Initialize Gemini client
 client = genai.Client(api_key=api_key)
 
+PROMPT_PATH = Path("prompts/ingredients_analysis.txt")
+
+def load_prompt():
+  return PROMPT_PATH.read_text()
+
+BASE_PROMPT = load_prompt()
+
 # Define request body schema
 class IngredientRequest(BaseModel):
   ingredients_text: str
@@ -45,25 +53,9 @@ def read_root():
 
 @app.post("/analyse")
 def analyse(data: IngredientRequest):
-  prompt = """
-  You are a food ingredient health expert.
-  Analyze the following ingredient list:
-
-  INGREDIENTS_PLACEHOLDER
-  Return ONLY valid JSON in this format:
-  [
-    {
-      "name": "",
-      "category": "",
-      "health_rating": "",
-      "explanation": ""
-    }
-  ]
-  """
 
   logger.debug(f"Received input: {data.ingredients_text}")
-  # print("Incoming body:", body)
-  prompt = prompt.replace("INGREDIENTS_PLACEHOLDER", data.ingredients_text)
+  prompt = BASE_PROMPT.replace("{{ingredients}}", data.ingredients_text)
 
   try:
     response = client.models.generate_content(
