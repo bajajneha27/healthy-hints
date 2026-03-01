@@ -59,8 +59,8 @@ def analyse(data: IngredientRequest):
       model="gemini-flash-latest",
       contents=prompt,
       config={
-        "temperature": 0.2,
-        "top_p": 0.9,
+        "temperature": 0.0,
+        "top_p": 0.1,
         "response_mime_type": "application/json"
       }
     )

@@ -1,4 +1,5 @@
 import type { AnalysisResponse } from './types'
+import { FaGithub } from 'react-icons/fa'
 import React from 'react'
 import { useState } from 'react'
 import './App.css'
@@ -41,33 +42,71 @@ function App() {
   }
 
   return(
-    <div style={{ maxWidth: 800, margin: "40px auto", fontFamily: "Arial" }}>
-      <h1>Healthy Hints</h1>
-      <textarea
-        rows={4}
-        style={{ width: "100%", padding: 10 }}
-        placeholder="Paste ingredients here..."
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-      />
+    <div style={{
+      maxWidth: 700,
+      margin: "0 auto",
+      padding: 16,
+      boxSizing: "border-box",
+      minHeight: "100vh",
+      display: "flex",
+      flexDirection: "column" }}>
+      <div style={{ flex: 1 }}>
+        <h1 style={{
+          fontSize: 28,
+          textAlign: "center",
+          marginBottom: 8,
+          whiteSpace: "nowrap"
+        }}>
+          Healthy Hints
+        </h1>
+        <label style={{
+          fontWeight: 500
+        }}>Product type: [ Food | Cosmetic | Household | Other ]</label>
+        <textarea
+          rows={4}
+          style={{ width: "100%", padding: 10 }}
+          placeholder="Paste ingredients here..."
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+        />
 
-      <button
-        onClick={analyseIngredients}
-        disabled={loading || !input.trim()}
-        style={{ marginTop: 10, padding: "8px 16px" }}
-      >
-        {loading ? "Analysing..." : "Analyse"}
-      </button>
+        <button
+          onClick={analyseIngredients}
+          disabled={loading || !input.trim()}
+          style={{ marginTop: 10, padding: "8px 16px" }}
+        >
+          {loading ? "Analysing..." : "Analyse"}
+        </button>
 
-      {error && (
-        <p style={{ color: "red", marginTop: 10 }}>{error}</p>
-      )}
+        {error && (
+          <p style={{ color: "red", marginTop: 10 }}>{error}</p>
+        )}
 
-      {result && (
-        <div>
-          <MemoizedResult result={result} />
-        </div>
-      )}
+        {result && (
+          <div style={{
+            maxWidth: 700,
+            margin: "0 auto",
+            padding: 16,
+            width: "100%",
+            boxSizing: "border-box"
+          }}>
+            <MemoizedResult result={result} />
+          </div>
+        )}
+      </div>
+      <div style={{
+        padding: 25,
+        fontSize: 12,
+        color: "#9ca3af",
+        textAlign: "center"
+      }}>
+        ⚠️ For informational purposes only. Not medical advice.
+      </div>
+      <a href='https://github.com/bajajneha27/healthy-hints'
+         target='_blank'
+         style={{ position: "absolute", top: 16, right: 16, fontSize: 22, opacity: 0.7}}>
+          <FaGithub/>
+      </a>
     </div>
   )
 }

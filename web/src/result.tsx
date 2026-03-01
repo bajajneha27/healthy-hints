@@ -17,25 +17,40 @@ const getColor = (rating: string) => {
   }
 }
 
+const ratingColor = {
+  "Low Risk": "#16a34a",
+  "Moderate Risk": "#eab308",
+  "High Risk": "#dc2626",
+  "Unclear": "#6b7280"
+}
+
 export default function Result({ result }: Props) {
+  const sentences = result.overall_assessment.summary.split(". ")
   return(
     <>
       <div className='app-container'>
-        <h2>{result.overall_assessment.overall_rating}</h2>
-        <p>{result.overall_assessment.summary}</p>
+        <span style={{ 
+          background: ratingColor[result.overall_assessment.overall_rating],
+          color: "white",
+          padding: "4px 8px",
+          borderRadius: 8,
+          fontSize: 12
+        }}>
+          {result.overall_assessment.overall_rating}
+        </span>
+        <p style={{ margin: 0 }}>{sentences}</p>
         <table
           style={{
             width: "100%",
-            marginTop: 20,
             borderCollapse: "collapse"
           }}
         >
           <thead>
             <tr>
-              <th align="left">Ingredient</th>
-              <th align="left">Category</th>
-              <th align="left">Rating</th>
-              <th align="left">Explanation</th>
+              <th style={{ width: "25%" }}>Ingredient</th>
+              <th style={{ width: "20%" }}>Category</th>
+              <th style={{ width: "15%" }}>Rating</th>
+              <th style={{ width: "40%" }}>Explanation</th>
             </tr>
           </thead>
           <tbody>
@@ -51,9 +66,6 @@ export default function Result({ result }: Props) {
           </tbody>
         </table>
       </div>
-      <p className='text-xs text-gray-500 mt-4 text-center'>
-        ⚠️ For informational purposes only. Not medical advice.
-      </p>
     </>
   )
 }
