@@ -60,6 +60,7 @@ def analyse(data: IngredientRequest):
       contents=prompt,
       config={
         "temperature": 0.2,
+        "top_p": 0.9,
         "response_mime_type": "application/json"
       }
     )
