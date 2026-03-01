@@ -48,12 +48,6 @@ function App() {
     }
   }
 
-  const score = results.reduce((acc, item) => {
-    if (item.health_rating == "Healthy") return acc + 1
-    if(item.health_rating == "Avoid") return acc - 1
-    return acc
-  }, 0)
-
   return(
     <div style={{ maxWidth: 800, margin: "40px auto", fontFamily: "Arial" }}>
       <h1>Healthy Hints</h1>
@@ -79,7 +73,6 @@ function App() {
 
       {results.length > 0 && (
         <body>
-          {/* <div className='score-card'>Overall Score: {score}</div> */}
           <div className='app-container'>
             <table
               style={{
