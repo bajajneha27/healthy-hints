@@ -46,7 +46,7 @@ class IngredientRequest(BaseModel):
 
 @app.get("/")
 def read_root():
-  return {"Hello": "World"}
+  return {"status": "Healthy Hints API running"}
 
 @app.post("/analyse")
 def analyse(data: IngredientRequest):

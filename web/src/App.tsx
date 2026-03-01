@@ -22,12 +22,13 @@ function App() {
   }
 
   const analyseIngredients = async() => {
+    const API_URL = import.meta.env.VITE_API_URL;
     setLoading(true)
     setError("")
     setResults([])
 
     try {
-      const response = await fetch("http://127.0.0.1:8080/analyse", {
+      const response = await fetch(API_URL+"/analyse", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
